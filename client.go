@@ -3,6 +3,7 @@ package Gobluem
 import (
 	"bufio"
 	"net"
+	"encoding/json"
 )
 
 var continuechan chan bool
@@ -43,9 +44,15 @@ func receiveMsg()(string,error){
 }
 
 
-func execCmd(cmd string)(string,error){
+func execCmd(cmd *CmdModel)(string,error){
+
+	json,err := json.Marshal(*cmd)
+	if err!=nil {
+		return "",err
+	}
+	str := string(json)
 	//发送命令
-	_,err:= sendCmd(cmd)
+	_,err = sendCmd(str)
 	if err!=nil {
 		return "",err
 	}

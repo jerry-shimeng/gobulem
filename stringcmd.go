@@ -1,34 +1,35 @@
 package Gobluem
-import "fmt"
+import (
+)
 
 func (this *GoBluemClient)Add(key ,value string)(string,error){
-	cmd := fmt.Sprintf("add %s %s",key,value)
-	return execCmd(cmd)
+	cmd := CmdModel{Cmd:"add",Key:key,Value:value}
+	return execCmd(&cmd)
 }
 
 func (this *GoBluemClient)Get(key  string)(string,error){
-	cmd := fmt.Sprintf("get %s",key)
-	return execCmd(cmd)
+	cmd := CmdModel{Cmd:"get",Key:key}
+	return execCmd(&cmd)
 }
 
 
 func (this *GoBluemClient)Set(key ,value string)(string,error){
-	cmd := fmt.Sprintf("set %s %s",key,value)
-	return execCmd(cmd)
+	cmd := CmdModel{Cmd:"set",Key:key,Value:value}
+	return execCmd(&cmd)
 }
 
 func (this *GoBluemClient)Del(key  string)(string,error){
-	cmd := fmt.Sprintf("del %s",key)
-	return execCmd(cmd)
+	cmd := CmdModel{Cmd:"del",Key:key,Value:""}
+	return execCmd(&cmd)
 }
 
 func (this *GoBluemClient)Append(key ,value string)(string,error){
-	cmd := fmt.Sprintf("append %s %s",key,value)
-	return execCmd(cmd)
+	cmd := CmdModel{Cmd:"append",Key:key,Value:value}
+	return execCmd(&cmd)
 }
 
 
 func (this *GoBluemClient)GetSet(key ,value string)(string,error){
-	cmd := fmt.Sprintf("getset %s %s",key,value)
-	return execCmd(cmd)
+	cmd := CmdModel{Cmd:"getset",Key:key,Value:value}
+	return execCmd(&cmd)
 }
